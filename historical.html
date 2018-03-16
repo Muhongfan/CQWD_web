@@ -3,7 +3,116 @@
 	<head>
 		<meta charset="UTF-8">
 		<title></title>
+
+
+		  <!-- Bootstrap Core CSS -->
+	    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+	
+	    <!-- MetisMenu CSS -->
+	    <link href="vendor/metisMenu/metisMenu.min.css" rel="stylesheet">
+	
+	    <!-- Custom CSS -->
+	    <link href="dist/css/sb-admin-2.css" rel="stylesheet">
+	
+	    <!-- Custom Fonts -->
+	    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+		
+		
+		<style>
+			body{
+				background: url(img/pop.png);
+				background-repeat: no-repeat;
+				background-attachment: fixed;
+			}
+			.texttitle{
+				margin-top: 50px;
+				margin-left: 12px;
+				letter-spacing: 10px;
+				font-size: 24px;
+				color: whitesmoke;
+			}
+			.usrtitle{
+				margin-top:35px;
+				margin-left: 90px;
+				width:200px;
+				height:40px;
+			<!--	border:2px solid #434A52;-->
+				padding-top: 10px;
+				padding-left:10px;
+				padding-bottom: 20px;
+			}
+		
+				.curbalan{
+				border:2px solid transparent;
+				margin-left: 100px;
+				margin-top: 30px;
+				width: 150px;
+				height: 20px;
+				font-size: 15px;
+			}
+			.coulo{
+				margin-top: 20px;
+				margin-left: 100px;
+			}
+				.enlo{
+			    position:fixed;
+			    margin-top: -10px;;
+
+				margin-left: 250px;
+				width: 60px;
+				border:0px solid transparent;
+			}
+			.container{
+			   border: 0px solid transparent;
+			   margin-left: 80px;
+			   margin-top: 10px;
+				width: 250px;
+				height: 180px;;
+			}
+		</style>
 	</head>
+	
+	
+	
+	
 	<body>
+		
+		<div class="texttitle">
+			<p>优惠券</p>
+		</div>
+		
+		<div class="usrtitle">
+			<div>历史账单</div>
+			<div style="padding-top: 5px;">HISTORICAL TRANSACTION</div>
+		</div>
+		
+		<div>
+			<div class="curbalan">历史消费总金额：</div>
+			<div class="curbalan" style="margin-left:100px;margin-top:2px;font-size: 10px;">近一年在重庆味道消费
+				<span id="count">n</span> 次</div>
+		</div>
+				
+		<div class="container">
+				<iframe style="border:0px; border-radius: 10px;; width: 250px;height: 150px;"src="transaction.html"></iframe>
+		</div>
+		
+			 <div class="enlo">  
+			<button position="fixed"type="button" class="btn  btn-default">返回</button>
+		 </div>
+	
+
+		   <!-- jQuery -->
+	    <script src="vendor/jquery/jquery.min.js"></script>
+	
+	    <!-- Bootstrap Core JavaScript -->
+	    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+	
+	    <!-- Metis Menu Plugin JavaScript -->
+	    <script src="vendor/metisMenu/metisMenu.min.js"></script>
+	
+	    <!-- Custom Theme JavaScript -->
+	    <script src="dist/js/sb-admin-2.js"></script>
+
+
 	</body>
 </html>

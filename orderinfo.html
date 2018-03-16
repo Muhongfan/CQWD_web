@@ -5,6 +5,7 @@
 		<title></title>
 
 
+
 		  <!-- Bootstrap Core CSS -->
 	    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 	
@@ -42,31 +43,35 @@
 				padding-bottom: 20px;
 			}
 		
-			.perinfo{
-				margin-top: 35px;;
 				
-			}
 			.coulo{
 				margin-top: 20px;
 				margin-left: 100px;
-				width: 50px;
-				height: 30px;;
-				border:2px solid #000000;
-
 			}
 				.enlo{
 				margin-top: 40px;
 				margin-left: 250px;
 				width: 60px;
-				height: 80px;
 				border:2px solid transparent;
 			}
-			p{
-				border:2px solid #434A52;
-				margin-top: -10px;
-				width: 50px;
-				height: 30px;;
-				
+			.orderlo{
+			border: 2px solid transparent;
+			width: 250px;
+			height: 200px;
+			margin-left: 60px;
+			margin-top: 10px;
+
+			}
+			.iframe{
+				margin-top: 50px;
+				margin-left: 100px;
+				width: 250px;
+				height: 300px;
+			}
+			.button{
+				margin-top: 200px;
+				margin-left: 240px;
+				position: fixed;
 			}
 		</style>
 	</head>
@@ -77,38 +82,16 @@
 	<body>
 		
 		<div class="texttitle">
-			<p>个人信息</p>
+			<p>订单信息</p>
 		</div>
-		
-		<div class="usrtitle">
-			<div>个人信息</div>
-			<div style="padding-top: 5px;">PERSONAL INFORMATION</div>
+		<div class="orderlo">
+		<iframe src="order.html"style="border:0px; "></iframe>
 		</div>
-		
-		<div class="perinfo">
-			<div class="coulo">
-				<div>姓名：</div>
-				<p id="name"></p>
-			</div>
-			<div class="coulo">
-				<div>性别：</div>
-				<p id="sex"></p>
-			</div>
-			<div class="coulo">
-				<div>生日：</div>
-				<p id="birthday"></p>
-			</div>
-			<div class="coulo">
-				<div>联系方式：</div>
-				<p id="contact"></p>
-			</div>
-		</div>
-				
 		 <div class="enlo">  
 			<button type="button" class="btn  btn-default">确定</button>
 		 </div>
 	
-
+	
 		   <!-- jQuery -->
 	    <script src="vendor/jquery/jquery.min.js"></script>
 	
@@ -121,10 +104,6 @@
 	    <!-- Custom Theme JavaScript -->
 	    <script src="dist/js/sb-admin-2.js"></script>
 
+
 	</body>
 </html>
-
-<script>
-	
-</script>
-

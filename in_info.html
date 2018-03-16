@@ -3,6 +3,7 @@
 	<head>
 		<meta charset="UTF-8">
 		<title></title>
+
 		
 		
 		<style>
@@ -29,11 +30,12 @@
 				padding-bottom: 20px;
 			}
 			.card{
-				background:url(img/card.png);
+				background:url(img/card2.png);
 				margin-top: 14px;
 				margin-left: 80px;
+				background-repeat: no-repeat;
 				width: 264px;
-				height: 145px;
+				height: 160px;
 				<!--border:2px solid #434A52;-->
 			}
 			.vip{
@@ -105,18 +107,18 @@
 				<div>VIP</div>
 			</div>
 			
-				<div style="width:150px;margin-left: 23px;padding-top: 2px; font-size:12px;color:whitesmoke;">卡号：</div>
-				<div style="margin-top:-20px;padding-top:4px;margin-left: 200px; font-size:12px;color:whitesmoke;">等级</div>
+				<div id="carn"style="width:150px;margin-left: 23px;padding-top: 2px; font-size:12px;color:whitesmoke;">卡号：</div>
+				<div id="lev" style="margin-top:-20px;padding-top:4px;margin-left: 200px; font-size:12px;color:whitesmoke;">等级</div>
 				<div class="balance">
-					<div>0.00</div>
+					<div id="bala">0.00</div>
 					<div style="font-size: 12px;">余额</div>
 				</div>
 				<div class="credit">
-					<div>0.00</div>
+					<div id="cre">0.00</div>
 					<div style="font-size: 12px;">积分</div>
 				</div>
 				<div class="coupon">
-					<div>0.00</div>
+					<div id="cou">0.00</div>
 					<div style="font-size: 12px;">优惠券<span style="font-size: 10px;">(张)</span></div>
 				</div>
 				
@@ -133,3 +135,42 @@
 
 	</body>
 </html>
+
+<script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>	  
+
+<script>
+	
+		function getinfo()
+		{
+			var u_info="http://192.168.1.196:9090/outerApi/getUsrInfo?user_id=a5a2583d6d6a4c96ba8de0827abc1d87";
+			//用户余额积分
+			$.ajax({
+				type:"post",
+				url: u_info,
+				timeout:1000,
+				contentType: "application/x-www-form-urlencoded",
+				async:false,
+				error:function(){
+					alter('Failed to communicate to the server. Try again!')
+				},
+				success: function(r){
+					var result=eval( '(' + r + ')' );  
+					if(result["rspCode"]=="DC00000")
+					{
+						var usr_id=result["user_name"];
+						$("#carn").html(usr_id);
+
+					}
+					
+				}
+			})
+			
+		
+			
+			
+		}
+		
+		getinfo();
+		
+		
+	</script>
