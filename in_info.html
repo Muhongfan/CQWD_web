@@ -137,12 +137,19 @@
 </html>
 
 <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>	  
+<script type="text/javascript" src="js/cookieSet.js" ></script>
+
 
 <script>
+		//var user_id=getCookie("user_id");
 	
 		function getinfo()
 		{
 			var u_info="http://192.168.1.196:9090/outerApi/getUsrInfo?user_id=a5a2583d6d6a4c96ba8de0827abc1d87";
+			//+user_id;
+			//var u_cou="http://192.168.1.196:9090//outerApi/getUserCoupon?user_id=a5a2583d6d6a4c96ba8de0827abc1d87";
+			//+user_id;
+			<!--+getCookie('user_id');-->
 			//用户余额积分
 			$.ajax({
 				type:"post",
@@ -153,20 +160,22 @@
 				error:function(){
 					alter('Failed to communicate to the server. Try again!')
 				},
-				success: function(r){
-					var result=eval( '(' + r + ')' );  
+				success: function(usr){
+					var result=eval( '(' + usr + ')' );  
 					if(result["rspCode"]=="DC00000")
 					{
 						var usr_id=result["user_name"];
+						var credit= result["accumulate_points"];
+						var balance=result["balance"];
+						var coupon=result["coupon_num"];
 						$("#carn").html(usr_id);
-
-					}
-					
+						$("#cre").html(credit);
+						$("#bala").html(balance);
+						$("#cou").html(coupon);
+						
+					}	
 				}
-			})
-			
-		
-			
+			})		
 			
 		}
 		

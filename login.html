@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" >
+<html>
 
 <head>
 	
@@ -8,7 +8,7 @@
 
 
   <meta charset="UTF-8">
-  <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+  <!--<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />-->
   <script src="js/sweet-alert.min.js"></script>
 
   <title>Login Form</title>
@@ -26,15 +26,14 @@
 
 
 <body>
-  <html lang="en-US">
     <div id="login">
-      <form id="form1" name='form-login'>
+      <form id="form1" name='form_login'>
       	<h1>Login</h1>
         <span class="fontawesome-user"></span>
-          <input type="text"name="user" id="user" placeholder="用户手机">
+          <input type="text" name="user" value="" id="user" placeholder="用户手机">
        
         <span class="fontawesome-lock"></span>
-          <input type="password" name="password" pass="pass" placeholder="密码">
+          <input type="password" name="password" value="" id="password" placeholder="密码">
         
         <input type="submit" value="注册">
         <input type="submit" onclick="loginin();" value="登录">
@@ -46,22 +45,23 @@
 <script type="text/javascript" >
 function loginin()
 {
-	if(form-login.user.value==""||form-login.password.value=="")
+	var formLogin = $('#form1').serialize();
+	if(formLogin.user=="" || formLogin.password=="")
 	{
-		sweetAlert("Plz enter your info!");
+		alert("Plz enter your info!");
 		return;
 	}
-	var usrnum=form-login.password.value;
+	var usrnum=formLogin.password;
 	if (!isPoneAvailable(usrnum))
 	{
 		sweetAlert("unvalid num!");
 		return;
 	}
 
-	var psd=  hex_sha1(form-login.password.value);
+	var psd=  hex_sha1(formLogin.password.value);
 	console.log(usrnum);
 	console.log(psd);
-	var u= "http://192.168.1.196:9090//outerApi/login?user_phone="
+	var u= "http://192.168.1.196:9090/outerApi/login?user_phone="
         	+usrnum+"&user_password="+psd;
     $.ajax({
     	type:"post",
@@ -69,7 +69,6 @@ function loginin()
         contentType: "application/x-www-form-urlencoded",
     	async:false,
     	success:function(res){
-
     		var result = eval( '(' + res+ ')' );         
     		 if (result["rspCode"] == "DC00000") {
                        swal({ 

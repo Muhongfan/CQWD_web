@@ -52,7 +52,7 @@
 			<div class="payway">
 				微信支付
 			</div>
-			<div class="demo_line_05">-------------------------------</div>
+			<div class="demo_line_05">------------------------</div>
 			<div class="payday">
 				日期
 			</div>
@@ -65,7 +65,7 @@
 			<div class="payway">
 				微信支付
 			</div>
-			<div class="demo_line_05">-------------------------------</div>
+			<div class="demo_line_05">------------------------</div>
 			<div class="payday">
 				日期
 			</div>
@@ -75,3 +75,36 @@
 		</div>
 	</body>
 </html>
+
+<script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+<script>
+	function getdate()
+	{
+		var u_pay="";  //url for previous financial detals
+		$.ajax({
+			type:"post",
+			url:u_pay,
+			timeout:1000,
+			contentType: "application/x-www-form-urlencoded",
+			async:false,
+			error:function(){
+				alter('Failed to communicate to the server. Try again!')
+			},
+			success:function(pay)
+			{
+				var result=eval( '(' + pay + ')' );  
+				if(result["rspCode"]=="DC00000")
+				{
+					var payday=result[""];
+					var paymoney=result[""];
+					$("#payday").html(payday);
+					$("#paymoney").html(paymoney);
+
+				}
+			}
+		})
+	}
+	
+	
+	
+</script>

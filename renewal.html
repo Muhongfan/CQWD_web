@@ -11,15 +11,9 @@
 		
 		  <!-- Bootstrap Core CSS -->
 	    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-	
-	    <!-- MetisMenu CSS -->
-	    <link href="vendor/metisMenu/metisMenu.min.css" rel="stylesheet">
-	
-	    <!-- Custom CSS -->
-	    <link href="dist/css/sb-admin-2.css" rel="stylesheet">
-	
-	    <!-- Custom Fonts -->
-	    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+     <link rel="stylesheet" href="css/pay.css">
+   		 <script src="js/jquery-3.3.1.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/vue"></script>
 		
 		
 		<style>
@@ -55,8 +49,9 @@
 			}
 			.bulo{
 				border:2px solid transparent;
-				margin-top: 13px;
-				margin-left: 70px;
+				margin-top: 15px;
+				margin-left: 55px;
+				width: 330px;
 				height: 120px;
 
 			}
@@ -66,91 +61,81 @@
 			width: 80px;
 			}
 			.enlo{
-				margin-top: 60px;
-				margin-left: 180px;
+				border: 2px solid #000000;
+				margin-top: 50px;
+				margin-left: 250px;
 				width: 60px;
 				border:2px solid transparent;
 			}
-			
-		
-			
-		</style>
+	</style>
 	</head>
-	
-	
-	
-	
 	<body>
-		
 		<div class="texttitle">
-			<p>充值</p>
+			<p style="color: whitesmoke">充值</p>
 		</div>
-		
 		<div class="usrtitle">
 			<div>充值</div>
 			<div style="padding-top: 5px;">MEMBERSHIP RENEWAL</div>
 		</div>
+		
 		<div>
 			<div class="curbalan">当前余额：</div>
-			<div style="margin-top:  -20px;margin-left: 170px;" class="curbalan">0.00</div>
+			<div name="balan" id="balan" style="margin-top:  -20px;margin-left: 170px;" class="curbalan"></div>
+		</div>
+		<div class="bulo" >
+			 <div id="change" >       
+        		<div class="change_middle" style="background: transparent;" >        
+            		<ul class="change_middle_choose" style="background: transparent; border: 0px;"  >
+               		 <li v-cloak v-for="(item,index) in chooseList" @click="chooseRechange(index)"  >
+                   		 <div name="choose" class="choose_classify" :class="{bgColor:item.checked}"  > 
+                      	  <p v-cloak >¥{{item.classify}}</p>
+                    	</div>
+               		 </li>
+           		 </ul>        
+       		 </div>
+   		 </div>	
 		</div>
 		
-		<div class="bulo">
-		<div style="margin-left: 20px;"class="locabu">
-			<div>
-		     <button type="button" class="btn btn-primary">¥100 </button>
-		    </div>
-	   </div> 
-	   
-	   <div style="margin-left: 20px;"class="locabu">   	
-			<div>
-		     	<button type="button" class="btn btn-primary">¥1000 </button>
-		     </div>
-	   </div>
-	   
-	     <div style="margin-left: 100px; margin-top: -85px;"class="locabu">   	
-			<div>
-		     	<button type="button" class="btn btn-primary">¥200 </button>
-		     </div>
-	   </div>
-	   
-	     <div style="margin-left: 100px; "class="locabu">   	
-			<div>
-		     	<button type="button" class="btn btn-outline-primary">¥1500 </button>
-		     </div>
-	   </div>
-	     <div style="margin-left: 180px; margin-top:-85px ;"class="locabu">   	
-			<div>
-		     	<button type="button" class="btn btn-outline-primary">¥500 </button>
-		     </div>
-	   </div>
-	     <div style="margin-left:180px;"class="locabu">   	
-			<div>
-		     	<button type="button" class="btn btn-outline-primary ">¥2000 </button>
-		     </div>
-	   </div>
-	   
-		 <div class="enlo">  
-		 	<button type="button" class="btn  btn-default">确定</button>
-
-		 </div>
-
+	 <div class="enlo">  
+		 <button name="ensure" id="ensure" type="button" class= " btn btn-default"  onclick="dec()">确定</button>
 	</div>
-		 
-		 
-		 
 		 
 		   <!-- jQuery -->
 	    <script src="vendor/jquery/jquery.min.js"></script>
 	
 	    <!-- Bootstrap Core JavaScript -->
 	    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
-	
-	    <!-- Metis Menu Plugin JavaScript -->
-	    <script src="vendor/metisMenu/metisMenu.min.js"></script>
-	
-	    <!-- Custom Theme JavaScript -->
-	    <script src="dist/js/sb-admin-2.js"></script>
+
 
 	</body>
 </html>
+<script type="text/javascript"  src="js/jquery-3.3.1.min.js"></script>
+<script>
+	
+	function showBalan(){
+			var u_renewal="http://192.168.1.196:9090//outerApi/getUsrInfo?user_id=a5a2583d6d6a4c96ba8de0827abc1d87";
+			$.ajax({
+				type:"post",
+				url:u_renewal,
+				timeout:1000,
+				contentType: "application/x-www-form-urlencoded",
+				async:false,
+				error:function(){
+					alter('Failed to communicate to the server. Try again!')
+				},
+				success:function(ren){
+					var result=eval( '(' + ren + ')' );
+					if(result["rspCode"]=="DC00000")
+					{
+						var balance=result["balance"];
+						$("#balan").html(balance); 
+					}
+				}
+				})
+			}
+
+
+	showBalan();
+</script>
+
+<script src="js/change.js"></script>

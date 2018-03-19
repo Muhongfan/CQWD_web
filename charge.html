@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html>
+	<head>
+
+	    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	    <meta name="viewport" content="width=device-width, initial-scale=1">
+	    <meta name="description" content="">
+	    <meta name="author" content="">
+		<meta charset="UTF-8">
+		<title>renewal</title>
+		
+		  <!-- Bootstrap Core CSS -->
+	    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+	
+
+		<style>
+			body{
+				background: url(img/pop.png);
+				background-repeat: no-repeat;
+				background-attachment: fixed;
+			}
+			.texttitle{
+				margin-top: 50px;
+				margin-left: 12px;
+				letter-spacing: 10px;
+				font-size: 24px;
+				color: whitesmoke;
+			}
+			.usrtitle{
+				margin-top:35px;
+				margin-left: 75px;
+				width:200px;
+				height:40px;
+			<!--	border:2px solid #434A52;-->
+				padding-top: 10px;
+				padding-left:10px;
+				padding-bottom: 20px;
+			}
+			.curbalan{
+				border:2px solid transparent;
+				position: fixed;
+				margin-left: 20px;
+				margin-top: 40px;
+				width: 200px;
+				height: 20px;
+				font-size: 15px;
+			}
+			.bulo{
+				position: fixed;
+				border:2px solid transparent;
+				margin-top: 70px;
+				margin-left: 2px;
+				height: 120px;
+			}
+			.locabu{
+			border:2px solid transparent;
+			margin-top: 10px;
+			width: 80px;
+			}
+			.enlo{
+				margin-top: 60px;
+				margin-left: 180px;
+				width: 60px;
+				border:2px solid transparent;
+			}
+			
+		</style>
+	</head>
+	
+	
+	
+	
+	<body>
+		
+		<div class="texttitle">
+			<p>充值</p>
+		</div>
+		
+		<form name="form_b" class="usrtitle">
+			<div>充值</div>
+			<div style="padding-top: 5px;">MEMBERSHIP RENEWAL</div>
+		</div>
+		<div class="curbalan">
+			<div >当前余额：</div>
+			<div name="balan"position="fixed"style="margin-top:  -23px;margin-left: 70px;" class="curbalan">0.00</div>
+		</div>
+		
+		<div class="bulo" >
+		<div style="margin-left: 20px;"class="locabu">
+			<div>
+		     <button name="one_h" value="100"  type="button" class="btn btn-primary" onclick="clicked();">¥100 </button>
+		    </div>
+	   </div> 
+	   
+	   <div style="margin-left: 20px;"class="locabu" id="mon">   	
+			<div>
+		     	<button name="ten_h" type="button" value="1000" class="btn btn-primary">¥1000 </button>
+		     </div>
+	   </div>
+	   
+	     <div style="margin-left: 100px; margin-top: -85px;"class="locabu">   	
+			<div>
+		     	<button name="two_h"type="button" value="200" class="btn btn-primary">¥200 </button>
+		     </div>
+	   </div>
+	   
+	     <div style="margin-left: 100px; "class="locabu">   	
+			<div>
+		     	<button name="fif_h" type="button" value="1500" class="btn btn-outline-primary">¥1500 </button>
+		     </div>
+	   </div>
+	     <div style="margin-left: 180px; margin-top:-85px ;" class="locabu">   	
+			<div>
+		     	<button name="fiv_h"type="button" value="500" class="btn btn-outline-primary">¥500 </button>
+		     </div>
+	   </div>
+	     <div style="margin-left:180px;"class="locabu">   	
+			<div>
+		     	<button name="twy_h"type="button" value="2000" class="btn btn-outline-primary ">¥2000 </button>
+		     </div>
+	   </div>
+	   
+		 <div class="enlo">  
+		 	<submit namae="ensure"type="button" class="btn  btn-default" onclick="Clicked()">确定</submit>
+
+		 </div>
+
+	</form>
+		 
+		 
+		 
+		 
+		   <!-- jQuery -->
+	    <script src="vendor/jquery/jquery.min.js"></script>
+	
+	    <!-- Bootstrap Core JavaScript -->
+	    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+	
+
+
+	</body>
+</html>
+
+<script type="text/javascript" src="js/cookieSet.js" ></script>
+<script>	
+	
+	var clkBool=false;
+	//var user_id=getCookie("user_id");
+	$(document).ready(function(){
+		$("button").click(function(){
+			var money=$("#mon").val();
+		})
+	})
+
+	function Clicked(){
+		if(money!=0){
+			clkBool=true;
+		}
+	}
+	
+		var u="http://192.168.1.196:9090//outerApi/recharge?user_id=a5a2583d6d6a4c96ba8de0827abc1d87&&recharge_amt=100";
+		//"+user_id+"&recharge_amt"+money;
+		$.ajax({
+			type:"post",
+			url:u,
+			contentType:"application/x-www-form-urlencoded",
+			async:false,
+			success:function(c){
+			var result = eval( '(' + c+ ')' );         
+    		 if (result["rspCode"] == "DC00000") {
+    		 	if(clkBool==true){
+    		 		var balance= result["user_balance"]
+    		 		$("#balan").html(balance);
+    		 	}   		 	
+    		 }
+			}
+			
+		})
+		
+		
+
+	function getinfo()
+		{
+			var u_info="http://192.168.1.196:9090/outerApi/getUsrInfo?user_id=a5a2583d6d6a4c96ba8de0827abc1d87";
+			//+user_id;
+			//var u_cou="http://192.168.1.196:9090//outerApi/getUserCoupon?user_id=a5a2583d6d6a4c96ba8de0827abc1d87";
+			//+user_id;
+			<!--+getCookie('user_id');-->
+			//用户余额积分
+			$.ajax({
+				type:"post",
+				url: u_info,
+				timeout:1000,
+				contentType: "application/x-www-form-urlencoded",
+				async:false,
+				error:function(){
+					alter('Failed to communicate to the server. Try again!')
+				},
+				success: function(usr){
+					var result=eval( '(' + usr + ')' );  
+					if(result["rspCode"]=="DC00000")
+					{
+						var balance=result["balance"];
+						$("#balan").html(balance);						
+					}	
+				}
+			})	;	
+			
+			
+			
+			
+			
+
+	
+	
+	
+	
+	
+		}
+		
+		getinfo();
+		
+
+
+	
+</script>

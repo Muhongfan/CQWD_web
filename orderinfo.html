@@ -43,34 +43,61 @@
 				padding-bottom: 20px;
 			}
 		
-				
+			.outer{
+				border: 2px solid transparent;
+				position: fixed;
+				margin-top: 35px;
+				margin-left: 60px;
+				width: 320px;
+				height: 330px;
+				padding: 2px 2px 2px 2px;
+			}
 			.coulo{
 				margin-top: 20px;
 				margin-left: 100px;
 			}
 				.enlo{
-				margin-top: 40px;
-				margin-left: 250px;
+				margin-top:-20px;
+				margin-left: 75%;
 				width: 60px;
 				border:2px solid transparent;
 			}
 			.orderlo{
-			border: 2px solid transparent;
-			width: 250px;
-			height: 200px;
-			margin-left: 60px;
-			margin-top: 10px;
+				position: fixed;
+				border: 2px solid transparent;
+				margin-left: 0;
+				width: 310px;
+				height: 250px;
+				margin-top: 0%;
+				padding: 1px 1px 1px 1px;
 
 			}
 			.iframe{
+				position: fixed;
+				border: 2px solid transparent;
 				margin-top: 50px;
-				margin-left: 100px;
+				margin-left: auto;
 				width: 250px;
 				height: 300px;
 			}
+			.detals{
+				border: 2px solid transparent;
+				margin-left: 30px;
+				margin-top:250px;				
+				width: 300px;
+				height: 65px;				
+			}
+			p{
+				border: 2px solid transparent;
+				padding: 2px;
+				margin: -5px -10px -10px 10px;		
+				width: 150px;		
+				height: 30px;;
+				
+			}
 			.button{
-				margin-top: 200px;
-				margin-left: 240px;
+				border: 2px solid #000000;
+
 				position: fixed;
 			}
 		</style>
@@ -84,13 +111,55 @@
 		<div class="texttitle">
 			<p>订单信息</p>
 		</div>
-		<div class="orderlo">
-		<iframe src="order.html"style="border:0px; "></iframe>
-		</div>
+		<div class="outer">
+			<div class="orderlo">
+			<iframe src="order.html"style="border:0px; "></iframe>
+			</div>
+			<div class="detals">
+				<div class="row">
+				<p>
+					订单号码：
+				</p>
+				<p name="ordernum" style="position:fixed; border: 2px solid transparent; margin-top: -20px; margin-left:100px;float: right; width: 200px;;">
+					
+				</p>
+				</div>
+				
+				<div class="row">
+				<p>
+					预订时间：
+				</p>
+				<p name="ordertime"style="position:fixed; border: 2px solid transparent; margin-top: -20px; margin-left:100px;float: right; width: 200px;;">
+					
+				</p>
+				</div>
+				
+				
+				<div class="row">
+				<p>
+					用餐人数：
+				</p>
+				<p name="people"style="position:fixed; border: 2px solid transparent; margin-top: -20px; margin-left:100px;float: right; width: 200px;;">
+					
+				</p>
+				</div>
+				
+				<div class="row">
+				<p>
+					桌号：
+				</p>
+				<p name="tablenum" style="position:fixed; border: 2px solid transparent; margin-top: -20px; margin-left:100px;float: right; width: 200px;;">
+					
+				</p>
+				</div>
+				
+			</div>
+		
+		
 		 <div class="enlo">  
 			<button type="button" class="btn  btn-default">确定</button>
 		 </div>
-	
+	</div>
 	
 		   <!-- jQuery -->
 	    <script src="vendor/jquery/jquery.min.js"></script>
